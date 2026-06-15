@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enzohuang98-crypto.github.io/xiangqi-analyzer-site/sitemap.xml

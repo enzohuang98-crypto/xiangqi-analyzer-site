@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests"
+    >
+    <meta name="referrer" content="no-referrer">
+    <meta name="description" content="象棋 AI 分析講解網站的 C 級資安基線與限制。">
+    <meta name="theme-color" content="#f7f7f2">
+    <title>資安說明｜象棋 AI 分析講解</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="legal-page">
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./">
+          <img src="assets/logo.svg" width="42" height="42" alt="">
+          <span><strong>象棋 AI 分析講解</strong><small>本機引擎 × 中文教練</small></span>
+        </a>
+      </div>
+    </header>
+    <main class="legal-main">
+      <article class="container legal-article">
+        <a class="back-link" href="./">← 返回首頁</a>
+        <p class="eyebrow">Security baseline</p>
+        <h1>C 級資安說明</h1>
+        <p class="legal-meta">版本 1.0｜更新日期：2026 年 6 月 15 日</p>
+
+        <p class="notice">
+          「C 級」是本專案自行定義的靜態產品網站安全基線，不是政府分級，也不代表
+          ISO 27001、SOC 2、滲透測試或任何第三方認證。
+        </p>
+
+        <h2>適用範圍</h2>
+        <p>
+          本基線只涵蓋這個公開說明網站。桌面 App、未來的安裝檔、更新服務、第三方象棋引擎及
+          AI Provider 有各自的風險與安全控制，不因網站符合本基線而自動符合。
+        </p>
+
+        <h2>網站架構</h2>
+        <ul>
+          <li>純靜態 HTML 與 CSS，不含後端、資料庫或伺服器端程式。</li>
+          <li>不執行 JavaScript，不使用第三方套件、CDN、外部字型或遠端圖片。</li>
+          <li>不提供登入、註冊、留言、搜尋、付款、檔案上傳或資料輸入表單。</li>
+          <li>目前不放置安裝檔，也不提供自動下載。</li>
+        </ul>
+
+        <h2>瀏覽器端限制</h2>
+        <p>
+          每一頁都設定嚴格的 Content Security Policy。預設拒絕所有資源，再僅允許同來源
+          CSS、圖片與字型；腳本、網路連線、框架、外掛物件、背景工作、媒體與表單提交均被禁止。
+        </p>
+        <p>
+          網站同時使用 <code>no-referrer</code>，避免使用者從本站前往其他網站時傳送目前頁面網址。
+          外部連結若日後加入，必須使用 <code>noopener</code> 與 <code>noreferrer</code>。
+        </p>
+
+        <h2>資料與隱私</h2>
+        <ul>
+          <li>本站不建立 Cookie、Local Storage 或 IndexedDB 資料。</li>
+          <li>本站不嵌入分析工具、廣告網路、社群像素或客服追蹤程式。</li>
+          <li>本站不要求、接收或處理 API Key、密碼、棋譜或個人資料。</li>
+          <li>代管平台可能基於維運與安全目的記錄連線資訊，受其政策約束。</li>
+        </ul>
+
+        <h2>供應鏈與發布</h2>
+        <ul>
+          <li>網站不使用 npm 套件與自動下載的前端依賴。</li>
+          <li>原始檔以 Git 版本控制，變更須通過本機網站檢查後才發布。</li>
+          <li>網站 Repository 與桌面 App Repository 分離，避免公開主程式原始碼或機密設定。</li>
+          <li>任何憑證、API Key、Token、私鑰與安裝簽章材料均不得提交到網站 Repository。</li>
+        </ul>
+
+        <h2>發行安裝檔前的必要條件</h2>
+        <p>未來若要提供下載，至少需要完成以下項目，才可維持 C 級發行基線：</p>
+        <ul>
+          <li>安裝檔使用可信任的程式碼簽章憑證簽署。</li>
+          <li>每個版本公開 SHA-256 雜湊與明確版本號。</li>
+          <li>下載連結只允許 HTTPS，且指向受控的正式發布位置。</li>
+          <li>發布前進行惡意程式掃描、依賴漏洞檢查與乾淨環境安裝測試。</li>
+          <li>舊版本不得被靜默替換；任何檔案變更都必須產生新版本與新雜湊。</li>
+        </ul>
+
+        <h2>已知限制</h2>
+        <p>
+          GitHub Pages 不允許專案自行設定所有 HTTP 回應標頭。因此
+          <code>X-Content-Type-Options</code>、完整的 <code>Permissions-Policy</code> 與
+          CSP 的 <code>frame-ancestors</code> 等控制，需在未來使用可自訂回應標頭的代管服務時補強。
+          現階段以無腳本、無輸入、無敏感資料及頁面內 CSP 降低風險。
+        </p>
+      </article>
+    </main>
+  </body>
+</html>

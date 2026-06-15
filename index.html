@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests"
+    >
+    <meta name="referrer" content="no-referrer">
+    <meta
+      name="description"
+      content="象棋 AI 分析講解是 Windows 本機象棋分析工具，結合 UCI/UCCI 引擎與使用者自備的 AI API，將引擎結果整理為中文說明。"
+    >
+    <meta name="theme-color" content="#f7f7f2">
+    <title>象棋 AI 分析講解</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./" aria-label="象棋 AI 分析講解首頁">
+          <img src="assets/logo.svg" width="42" height="42" alt="">
+          <span>
+            <strong>象棋 AI 分析講解</strong>
+            <small>本機引擎 × 中文教練</small>
+          </span>
+        </a>
+        <nav aria-label="主要導覽">
+          <a href="#features">功能</a>
+          <a href="#guide">使用方式</a>
+          <a href="#engines">相容性</a>
+          <a href="#security">資安</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Windows 桌面象棋學習工具</p>
+            <h1>看懂引擎，<br>不只看見分數。</h1>
+            <p class="hero-lead">
+              使用本機象棋引擎即時分析局面，再由你選擇的 AI
+              將候選著、優劣與思考方向整理成清楚的中文說明。
+            </p>
+            <div class="hero-actions">
+              <span class="button button-primary is-disabled" aria-disabled="true">
+                安裝檔尚未開放
+              </span>
+              <a class="button button-secondary" href="#guide">先看使用說明</a>
+            </div>
+            <p class="release-note">
+              目前網站為產品預覽版，不提供安裝檔，也不收集任何個人資料。
+            </p>
+          </div>
+
+          <div class="product-preview" aria-label="產品介面概念示意">
+            <div class="preview-toolbar">
+              <span></span><span></span><span></span>
+              <p>局面分析</p>
+            </div>
+            <div class="preview-body">
+              <div class="mini-board" aria-hidden="true">
+                <div class="river">楚河　漢界</div>
+                <span class="piece red piece-r">帥</span>
+                <span class="piece black piece-b">將</span>
+                <span class="piece red piece-c">車</span>
+                <span class="piece black piece-h">馬</span>
+              </div>
+              <div class="analysis-card">
+                <div class="live-row">
+                  <span class="live-dot"></span>
+                  <strong>引擎分析中</strong>
+                  <span>深度 18</span>
+                </div>
+                <div class="score">紅方略優 <b>+0.42</b></div>
+                <div class="line"></div>
+                <div class="line short"></div>
+                <div class="coach-tip">
+                  <span>中文重點</span>
+                  先穩定中路，再考慮擴大先手。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="產品原則">
+        <div class="container trust-grid">
+          <div><strong>本機優先</strong><span>引擎在你的電腦執行</span></div>
+          <div><strong>使用者自備 API</strong><span>費用由服務商計價</span></div>
+          <div><strong>引擎是判斷來源</strong><span>AI 專注解釋資料</span></div>
+          <div><strong>Windows App</strong><span>免用終端機啟動</span></div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">核心功能</p>
+            <h2>從擺棋到理解，一個畫面完成</h2>
+            <p>保留引擎的專業資訊，同時降低閱讀門檻。</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card feature-card-wide">
+              <span class="card-index">01</span>
+              <h3>即時引擎分析</h3>
+              <p>
+                顯示分析進度、深度、評分、候選著與原始輸出，不必等待整段分析結束才知道狀態。
+              </p>
+              <div class="status-demo">
+                <span>分析深度</span>
+                <div class="progress"><i></i></div>
+                <strong>18 / 24</strong>
+              </div>
+            </article>
+            <article class="feature-card">
+              <span class="card-index">02</span>
+              <h3>中文棋理解釋</h3>
+              <p>將引擎符號整理成局面判斷、風險、計畫與可追問的自然語言。</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-index">03</span>
+              <h3>點選你的著法</h3>
+              <p>直接在棋盤選擇想走的棋，比較你的思路與引擎建議，不必輸入座標。</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-index">04</span>
+              <h3>棋盤操作完整</h3>
+              <p>支援悔棋、下一步、還原原始棋盤與可收合的擺棋工具。</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-index">05</span>
+              <h3>多家 AI Provider</h3>
+              <p>統一金鑰欄位，支援 OpenAI、Gemini 與 Claude 的相容設定流程。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="guide" class="section section-tinted">
+        <div class="container guide-layout">
+          <div class="section-heading sticky-heading">
+            <p class="eyebrow">快速開始</p>
+            <h2>第一次使用</h2>
+            <p>
+              引擎與 AI 服務都由使用者自行選擇。軟體不提供引擎授權，也不包含 AI 額度。
+            </p>
+          </div>
+          <ol class="steps">
+            <li>
+              <span>1</span>
+              <div>
+                <h3>安裝 Windows App</h3>
+                <p>正式開放後，請從本網站下載已標示版本與 SHA-256 的安裝檔。</p>
+              </div>
+            </li>
+            <li>
+              <span>2</span>
+              <div>
+                <h3>加入本機象棋引擎</h3>
+                <p>在設定中選擇可信來源的引擎執行檔，測試連線後設為主要引擎。</p>
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <h3>選擇性設定 AI</h3>
+                <p>
+                  貼上你自己的 API Key。只有使用 AI 中文解釋時才會呼叫對應服務並產生費用。
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>4</span>
+              <div>
+                <h3>擺局或匯入局面</h3>
+                <p>從棋盤、FEN 或棋譜建立局面，點選想走的棋後查看即時分析。</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="engines" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">引擎與 AI</p>
+            <h2>不綁定單一服務</h2>
+            <p>實際相容性仍依引擎版本、協定實作與模型供應商政策而定。</p>
+          </div>
+          <div class="compat-grid">
+            <article class="compat-card">
+              <span class="pill">本機引擎</span>
+              <h3>UCI / UCCI</h3>
+              <p>
+                內建 Pikafish、象棋名手、象棋旋風、象棋小蟲、阿爾法貓與自訂引擎設定檔。
+              </p>
+              <ul>
+                <li>引擎程式不隨安裝檔散布</li>
+                <li>可設定主要與複核引擎</li>
+                <li>執行前測試協定與連線狀態</li>
+              </ul>
+            </article>
+            <article class="compat-card">
+              <span class="pill pill-blue">雲端 AI</span>
+              <h3>Claude / OpenAI / Gemini</h3>
+              <p>
+                AI 只負責解釋結構化引擎資料，不取代引擎做棋力判斷。
+              </p>
+              <ul>
+                <li>使用者自行申請 API Key</li>
+                <li>費用由各 Provider 直接計價</li>
+                <li>可只用本機引擎、不啟用 AI</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="security" class="section security-section">
+        <div class="container security-layout">
+          <div>
+            <p class="eyebrow light">網站安全</p>
+            <h2>C 級資安基線</h2>
+            <p class="security-intro">
+              本網站的 C 級為專案內部靜態展示網站基線，不代表政府、ISO、SOC 2
+              或第三方認證。
+            </p>
+            <a class="text-link light-link" href="security.html">查看完整安全說明 →</a>
+          </div>
+          <div class="security-grid">
+            <article><strong>零資料輸入</strong><span>沒有登入、表單、留言或付款功能</span></article>
+            <article><strong>零追蹤</strong><span>不放分析碼、廣告、Cookie 或社群像素</span></article>
+            <article><strong>零第三方程式</strong><span>不載入 CDN、外部字型或遠端 JavaScript</span></article>
+            <article><strong>嚴格 CSP</strong><span>禁止腳本、連線、框架、物件與表單提交</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">常見問題</p>
+            <h2>下載前先知道</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>現在可以下載嗎？</summary>
+              <p>還不行。目前只發布網站，待安裝檔簽章、雜湊與發行流程確認後再開放。</p>
+            </details>
+            <details>
+              <summary>一定要付 AI API 費用嗎？</summary>
+              <p>不一定。可只使用本機引擎分析；啟用 AI 中文解釋時，才會使用你的 API 額度。</p>
+            </details>
+            <details>
+              <summary>軟體有附象棋引擎嗎？</summary>
+              <p>沒有。使用者需自行從可信來源取得具合法授權的引擎，並在設定頁指定路徑。</p>
+            </details>
+            <details>
+              <summary>支援哪些作業系統？</summary>
+              <p>目前產品目標是 Windows 桌面環境，其他平台尚未列入正式支援。</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="container final-cta-inner">
+          <div>
+            <p class="eyebrow">發行狀態</p>
+            <h2>網站先行，安裝檔稍後。</h2>
+          </div>
+          <span class="button button-primary is-disabled" aria-disabled="true">
+            下載尚未開放
+          </span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="./">
+            <img src="assets/logo.svg" width="38" height="38" alt="">
+            <span><strong>象棋 AI 分析講解</strong><small>本機引擎 × 中文教練</small></span>
+          </a>
+          <p>讓引擎資訊更容易理解的 Windows 桌面工具。</p>
+        </div>
+        <div class="footer-links">
+          <strong>網站資訊</strong>
+          <a href="security.html">資安說明</a>
+          <a href="privacy.html">隱私說明</a>
+        </div>
+        <div class="footer-meta">
+          <span>產品預覽版</span>
+          <span>不提供安裝檔</span>
+          <span>© 2026 Xiangqi Analyzer</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
