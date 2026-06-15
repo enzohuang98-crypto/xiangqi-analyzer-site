@@ -42,7 +42,7 @@
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Windows 桌面象棋學習工具</p>
+            <p class="eyebrow">本機運算 · Windows 桌面象棋學習工具</p>
             <h1>看懂引擎，<br>不只看見分數。</h1>
             <p class="hero-lead">
               使用本機象棋引擎即時分析局面，再由你選擇的 AI
@@ -57,12 +57,23 @@
             <p class="release-note">
               目前網站為產品預覽版，不提供安裝檔，也不收集任何個人資料。
             </p>
+            <div class="hero-proof" aria-label="產品特點">
+              <span><i aria-hidden="true"></i>本機引擎</span>
+              <span><i aria-hidden="true"></i>隱私優先</span>
+              <span><i aria-hidden="true"></i>中文解釋</span>
+            </div>
           </div>
 
           <div class="product-preview" aria-label="產品介面概念示意">
             <div class="preview-toolbar">
-              <span></span><span></span><span></span>
-              <p>局面分析</p>
+              <div class="window-controls" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="preview-title">
+                <img src="assets/logo.svg" width="22" height="22" alt="">
+                <p>象棋 AI 分析講解</p>
+              </div>
+              <span class="window-label">局面分析</span>
             </div>
             <div class="preview-body">
               <div class="mini-board" aria-hidden="true">
@@ -73,14 +84,24 @@
                 <span class="piece black piece-h">馬</span>
               </div>
               <div class="analysis-card">
+                <div class="analysis-tabs" aria-hidden="true">
+                  <span class="active">即時分析</span>
+                  <span>AI 解釋</span>
+                </div>
                 <div class="live-row">
                   <span class="live-dot"></span>
                   <strong>引擎分析中</strong>
                   <span>深度 18</span>
                 </div>
                 <div class="score">紅方略優 <b>+0.42</b></div>
-                <div class="line"></div>
-                <div class="line short"></div>
+                <div class="evaluation-chart" aria-hidden="true">
+                  <i></i>
+                  <span class="chart-point"></span>
+                </div>
+                <div class="candidate-list" aria-hidden="true">
+                  <div><span>1</span><strong>炮二平五</strong><em>+0.42</em></div>
+                  <div><span>2</span><strong>馬二進三</strong><em>+0.31</em></div>
+                </div>
                 <div class="coach-tip">
                   <span>中文重點</span>
                   先穩定中路，再考慮擴大先手。
@@ -110,6 +131,7 @@
           <div class="feature-grid">
             <article class="feature-card feature-card-wide">
               <span class="card-index">01</span>
+              <span class="feature-mark" aria-hidden="true">深度</span>
               <h3>即時引擎分析</h3>
               <p>
                 顯示分析進度、深度、評分、候選著與原始輸出，不必等待整段分析結束才知道狀態。
@@ -122,21 +144,25 @@
             </article>
             <article class="feature-card">
               <span class="card-index">02</span>
+              <span class="feature-mark" aria-hidden="true">中文</span>
               <h3>中文棋理解釋</h3>
               <p>將引擎符號整理成局面判斷、風險、計畫與可追問的自然語言。</p>
             </article>
             <article class="feature-card">
               <span class="card-index">03</span>
+              <span class="feature-mark" aria-hidden="true">點選</span>
               <h3>點選你的著法</h3>
               <p>直接在棋盤選擇想走的棋，比較你的思路與引擎建議，不必輸入座標。</p>
             </article>
             <article class="feature-card">
               <span class="card-index">04</span>
+              <span class="feature-mark" aria-hidden="true">棋盤</span>
               <h3>棋盤操作完整</h3>
               <p>支援悔棋、下一步、還原原始棋盤與可收合的擺棋工具。</p>
             </article>
             <article class="feature-card">
               <span class="card-index">05</span>
+              <span class="feature-mark" aria-hidden="true">AI</span>
               <h3>多家 AI Provider</h3>
               <p>統一金鑰欄位，支援 OpenAI、Gemini 與 Claude 的相容設定流程。</p>
             </article>
