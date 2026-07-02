@@ -1,8 +1,8 @@
-version: 0.2.3
+version: 0.2.4
 files:
-  - url: xiangqi-analyzer-0.2.3-setup.exe
-    sha512: 2KdLuDB2m5G5YU2t3DxPV4Ovpxkwro1WbPU1L/Ud7UgkjFj2qkXW7ej7G15acjVUtYEVSCwjK99b5P2p6EPBDQ==
-    size: 104164273
-path: xiangqi-analyzer-0.2.3-setup.exe
-sha512: 2KdLuDB2m5G5YU2t3DxPV4Ovpxkwro1WbPU1L/Ud7UgkjFj2qkXW7ej7G15acjVUtYEVSCwjK99b5P2p6EPBDQ==
-releaseDate: '2026-06-26T05:58:33.250Z'
+  - url: xiangqi-analyzer-0.2.4-setup.exe
+    sha512: nKl8QlnmcDIRttEZmAftobirdQNU5TzTPNB3CRbR3cIYIYIPUfJPcNbW672M93/0w3DwDRp1SgHg7u4OEfMbjQ==
+    size: 104165773
+path: xiangqi-analyzer-0.2.4-setup.exe
+sha512: nKl8QlnmcDIRttEZmAftobirdQNU5TzTPNB3CRbR3cIYIYIPUfJPcNbW672M93/0w3DwDRp1SgHg7u4OEfMbjQ==
+releaseDate: '2026-07-02T09:18:28.140Z'
