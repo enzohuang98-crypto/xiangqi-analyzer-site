@@ -1,8 +1,8 @@
-version: 0.3.0
+version: 0.3.1
 files:
-  - url: xiangqi-analyzer-0.3.0-setup.exe
-    sha512: GqjbFU/LA/E5M+GOjHCHvYtLlZXaYZUforTjBP3becRyqrQZ/nQVVghoB/ahOrF70vX5awRhsLRs00MFUTnPBg==
-    size: 103203959
-path: xiangqi-analyzer-0.3.0-setup.exe
-sha512: GqjbFU/LA/E5M+GOjHCHvYtLlZXaYZUforTjBP3becRyqrQZ/nQVVghoB/ahOrF70vX5awRhsLRs00MFUTnPBg==
-releaseDate: '2026-07-13T02:14:29.623Z'
+  - url: xiangqi-analyzer-0.3.1-setup.exe
+    sha512: ODZV3GNjvzAsrHThtNdDp/wBgO9RlDIdUe4HBqMtFVy1KeWH6oebVHGCuSA5iFdt9zQRwLFi4t/2nIfAr4Pdtg==
+    size: 103213881
+path: xiangqi-analyzer-0.3.1-setup.exe
+sha512: ODZV3GNjvzAsrHThtNdDp/wBgO9RlDIdUe4HBqMtFVy1KeWH6oebVHGCuSA5iFdt9zQRwLFi4t/2nIfAr4Pdtg==
+releaseDate: '2026-07-14T09:40:10.748Z'
