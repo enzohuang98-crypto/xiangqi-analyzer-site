@@ -9,5 +9,5 @@
   </g>
   <circle cx="32" cy="32" r="19" fill="none" stroke="#cfe0d3" stroke-width="1.7"/>
   <path d="M22 42 41 23" fill="none" stroke="#c84f3b" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="42" cy="22" r="5" fill="none" stroke="#c84f3b" stroke-width="3"/>
+  <circle cx="42" cy="22" r="5" fill="#f7f7f2" stroke="#c84f3b" stroke-width="3"/>
 </svg>
