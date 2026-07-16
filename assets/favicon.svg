@@ -1,5 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#245b45"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Reckoning">
+  <defs>
+    <clipPath id="favicon-board-disc"><circle cx="32" cy="32" r="19"/></clipPath>
+  </defs>
+  <rect width="64" height="64" rx="17" fill="#123d2e"/>
   <circle cx="32" cy="32" r="21" fill="#f7f7f2"/>
-  <text x="32" y="41" text-anchor="middle" font-family="serif" font-size="25" font-weight="700" fill="#c84f3b">棋</text>
+  <g clip-path="url(#favicon-board-disc)" fill="none" stroke="#d9e7dc" stroke-width="1.7">
+    <path d="M19 12v40M32 12v40M45 12v40M12 19h40M12 32h40M12 45h40"/>
+  </g>
+  <circle cx="32" cy="32" r="19" fill="none" stroke="#cfe0d3" stroke-width="1.7"/>
+  <path d="M22 42 41 23" fill="none" stroke="#c84f3b" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="42" cy="22" r="5" fill="none" stroke="#c84f3b" stroke-width="3"/>
 </svg>
