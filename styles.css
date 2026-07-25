@@ -431,6 +431,38 @@ nav a:hover {
   border-radius: 50%;
   background: #4b966f;
   box-shadow: 0 0 0 5px #e0f0e6;
+  animation: live-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 5px #e0f0e6;
+  }
+  50% {
+    box-shadow: 0 0 0 8px #cfe8da;
+  }
+}
+
+@keyframes piece-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.piece {
+  animation: piece-float 5s ease-in-out infinite;
+}
+
+.piece-b,
+.piece-c {
+  animation-delay: 0.6s;
+}
+
+.piece-h {
+  animation-delay: 1.2s;
 }
 
 .score {
@@ -1043,6 +1075,55 @@ details p {
   background: var(--green-light);
 }
 
+.notice-warn {
+  border-left-color: var(--red);
+  background: #f7e9e3;
+  color: #6b3a2c;
+}
+
+.guide-lead {
+  max-width: 640px;
+  margin: 20px 0 28px;
+  color: #536059;
+  font-size: 16px;
+}
+
+.guide-steps {
+  margin: 20px 0 36px;
+}
+
+.guide-list {
+  margin: 16px 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-list li {
+  position: relative;
+  padding: 8px 0 8px 22px;
+  color: #4e5c54;
+  font-size: 14px;
+}
+
+.guide-list li::before {
+  position: absolute;
+  top: 17px;
+  left: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  content: "";
+}
+
+.guide-footer-note {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .back-link {
   display: inline-block;
   margin-bottom: 28px;
@@ -1246,5 +1327,10 @@ details p {
 
   .feature-card:hover {
     transform: none;
+  }
+
+  .live-dot,
+  .piece {
+    animation: none;
   }
 }

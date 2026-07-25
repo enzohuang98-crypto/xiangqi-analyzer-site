@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests"
+    >
+    <meta name="referrer" content="no-referrer">
+    <meta
+      name="description"
+      content="完全不懂電腦也看得懂的象棋 AI 分析講解使用說明：下載、安裝、Windows 警告怎麼辦、第一次分析怎麼做。"
+    >
+    <meta name="theme-color" content="#f7f7f2">
+    <title>使用說明｜象棋 AI 分析講解</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="legal-page">
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./" aria-label="象棋 AI 分析講解首頁">
+          <img src="assets/logo.svg" width="42" height="42" alt="">
+          <span>
+            <strong>象棋 AI 分析講解</strong>
+            <small>本機引擎 × 中文教練</small>
+          </span>
+        </a>
+        <nav aria-label="主要導覽">
+          <a href="./#features">功能</a>
+          <a href="guide.html">使用方式</a>
+          <a href="./#engines">相容性</a>
+          <a href="./#security">資安</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="legal-main">
+      <article class="container legal-article guide-article">
+        <a class="back-link" href="./">← 返回首頁</a>
+        <p class="eyebrow">給完全不熟電腦的人看的說明</p>
+        <h1>從下載到看懂第一步棋</h1>
+        <p class="legal-meta">版本 1.0｜更新日期：2026 年 7 月 25 日</p>
+
+        <p class="guide-lead">
+          這份說明假設你沒有寫過程式、也沒特別懂電腦，只用最普通的方式操作滑鼠與鍵盤。
+          每一步都會說清楚「要點哪裡」跟「為什麼要這樣做」。跟著做，大概十分鐘內就能看到
+          第一個分析結果。
+        </p>
+
+        <div class="notice">
+          這是什麼軟體？簡單說：<strong>電腦會先算出這步棋好不好</strong>（這部分完全免費、
+          在你自己電腦上跑），<strong>然後你可以選擇性地</strong>讓一個 AI 服務把算出來的數字
+          翻譯成一段中文說明「為什麼」。不想用 AI 也完全沒問題，光靠電腦計算就能看到最佳著法。
+        </div>
+
+        <h2 id="download">第一步：下載安裝檔</h2>
+        <ol class="steps guide-steps">
+          <li>
+            <span>1</span>
+            <div>
+              <h3>回到首頁，按下「下載 Windows 安裝檔」</h3>
+              <p>
+                按下後會跳到 GitHub（一個公開放程式碼與檔案的網站）的「Releases」頁面，
+                這是本專案唯一正式發布安裝檔的地方。
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              <h3>找到副檔名是 <code>.exe</code> 的檔案並下載</h3>
+              <p>
+                檔名長得像 <code>xiangqi-analyzer-<em>版本號</em>-setup.exe</code>，
+                中間的版本號會隨著新版更新而不同，下載清單裡最上面那一個就是最新版。
+                旁邊的 <code>.blockmap</code> 與 <code>latest.yml</code> 是自動更新用的，
+                <strong>不用下載</strong>。瀏覽器下載完成後，檔案通常會出現在「下載」資料夾。
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <h2 id="smartscreen">第二步：Windows 跳出藍色警告視窗怎麼辦？</h2>
+        <p>
+          雙擊剛剛下載的安裝檔後，Windows 很可能會跳出一個藍色視窗，寫著「Windows 已保護您的電腦」
+          或「未知的發行者」。<strong>這不是病毒警告，也不代表軟體有問題。</strong>
+        </p>
+        <p>
+          它出現的原因很單純：正式的「軟體簽章憑證」要花錢跟審核流程購買，這個專案目前還沒有申請，
+          所以 Windows 對所有沒有簽章的軟體都會這樣提醒，不分好壞。本專案原始碼是公開的，
+          任何人都可以檢查裡面到底做了什麼。
+        </p>
+        <ol class="steps guide-steps">
+          <li>
+            <span>1</span>
+            <div>
+              <h3>在藍色視窗裡找「其他資訊」或「More info」</h3>
+              <p>點一下這行字（通常是小小灰色的字，在視窗中間偏左）。</p>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              <h3>會出現一個新按鈕「仍要執行」或「Run anyway」</h3>
+              <p>點下去，安裝程式就會正常打開。</p>
+            </div>
+          </li>
+        </ol>
+        <div class="notice notice-warn">
+          如果不放心，可以先把下載下來的檔案交給你信任、比較懂電腦的朋友或家人看一眼再繼續，
+          這是完全合理的作法。
+        </div>
+
+        <h2 id="install">第三步：安裝</h2>
+        <ol class="steps guide-steps">
+          <li>
+            <span>1</span>
+            <div>
+              <h3>打開安裝精靈後一路按「下一步」</h3>
+              <p>
+                如果想改變安裝到哪個磁碟機／資料夾，這裡可以調整；不確定的話用預設值就好。
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              <h3>等待安裝完成</h3>
+              <p>桌面會自動出現一個捷徑圖示，安裝完成後可以直接雙擊它打開軟體。</p>
+            </div>
+          </li>
+        </ol>
+
+        <h2 id="first-run">第四步：第一次打開軟體</h2>
+        <p>
+          第一次啟動會看到一個簡單的設定畫面，只有兩件事可以設定，而且<strong>兩個都可以先跳過</strong>：
+        </p>
+        <ul class="guide-list">
+          <li><strong>本機象棋引擎</strong>：軟體已經內附一個叫 Pikafish 的引擎，開箱即用，
+            這一步通常什麼都不用做。</li>
+          <li><strong>AI 服務金鑰</strong>：這是選填的，留到後面想用的時候再回來設定也可以。
+            直接按「完成」就能進到主畫面。</li>
+        </ul>
+
+        <h2 id="how-it-works">「本機引擎」跟「AI」到底差在哪？</h2>
+        <p>
+          可以想成兩個角色：<strong>引擎</strong>像是一個很會算棋的計算機，它會告訴你「這步最好、
+          分數是多少」，這部分完全在你自己的電腦上計算，不用網路、不用付費。
+          <strong>AI</strong>像是一位翻譯，把引擎算出來的數字翻成一段白話文，解釋「為什麼這步好、
+          你原本想的那步差在哪裡」。AI 是加分項，不開也完全能用軟體分析棋局。
+        </p>
+
+        <h2 id="ai-setup">第五步（選用）：想要 AI 中文解說怎麼設定？</h2>
+        <ol class="steps guide-steps">
+          <li>
+            <span>1</span>
+            <div>
+              <h3>自行申請一個 AI 服務的 API 金鑰</h3>
+              <p>
+                目前支援 Anthropic Claude、OpenAI 與 Google Gemini，擇一即可。到該服務官方網站
+                申請帳號後，網站上會有「API Key」或「API 金鑰」的申請頁面；申請與後續使用是否收費
+                由該服務商決定，跟本軟體無關。
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              <h3>回到軟體，點右上角「設定」→「AI」</h3>
+              <p>選好對應的服務與模型，把金鑰貼上，按「儲存並使用」。</p>
+            </div>
+          </li>
+          <li>
+            <span>3</span>
+            <div>
+              <h3>按「測試金鑰」確認貼對了</h3>
+              <p>
+                軟體會實際連線該服務做一次輕量驗證（不會產生解說內容、也不會花費太多額度），
+                告訴你金鑰是否有效，貼錯服務或打錯字都會馬上被擋下並提示。
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <h2 id="first-analysis">第六步：看懂你的第一個分析</h2>
+        <ol class="steps guide-steps">
+          <li>
+            <span>1</span>
+            <div>
+              <h3>用畫面上的棋盤擺出想分析的局面</h3>
+              <p>
+                可以直接在棋盤上點棋子再點目的地移動，也可以貼上棋譜或 FEN 局面代碼
+                （進階玩家常用的局面表示法，不熟悉可以先忽略這個選項）。
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              <h3>畫面下方會自動開始「局面分析」</h3>
+              <p>
+                幾秒內會看到深度、分數與建議的最佳著法，分數是用「兵」做單位（一隻兵大約等於
+                +1.00），正數代表現在輪走的一方比較有利。
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>3</span>
+            <div>
+              <h3>想知道「為什麼」，按右上角「AI 教練」</h3>
+              <p>
+                如果已經設定金鑰，這裡會產生一段中文說明，講清楚最佳著法的用意、你原本想法的
+                問題出在哪裡，以及後續可能發生什麼。
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <h2 id="guess-mode">加碼玩法：猜著模式</h2>
+        <p>
+          「猜著」是讓你在看到答案前，先自己選一步想走的棋，鎖定後軟體才會告訴你引擎的最佳著法，
+          並比較兩者差多少分。適合想練習「自己判斷」而不是直接看答案的人。
+        </p>
+
+        <h2 id="faq">常見問題</h2>
+        <details>
+          <summary>安裝完打開軟體，防毒軟體跳出攔截或隔離怎麼辦？</summary>
+          <p>
+            部分防毒軟體對沒有付費簽章的新軟體會特別敏感，屬於前面提過的同一種情況。
+            可以在防毒軟體的隔離／攔截紀錄裡找到這個檔案，選擇「允許」或「還原」。
+            如果不放心，可以先在防毒軟體或線上掃毒服務手動掃描下載下來的安裝檔再決定。
+          </p>
+        </details>
+        <details>
+          <summary>分析畫面一直轉圈圈，沒有跑出結果？</summary>
+          <p>
+            先確認「設定」→「引擎」頁面顯示引擎狀態正常；如果顯示找不到引擎執行檔，
+            可以移除目前的引擎設定，讓軟體重新加入內附的 Pikafish。
+          </p>
+        </details>
+        <details>
+          <summary>想解除安裝怎麼做？</summary>
+          <p>
+            跟解除安裝一般 Windows 軟體一樣：打開「設定」→「應用程式」，找到
+            「象棋 AI 分析講解」，選解除安裝即可；棋局資料與設定會一併移除，
+            建議解除安裝前先到軟體內「設定」→「系統」使用「匯出備份」保存。
+          </p>
+        </details>
+        <details>
+          <summary>AI 解說會不會亂編棋步？</summary>
+          <p>
+            不會。AI 只負責把引擎算出來的資料翻成白話文解釋，不會自己發明引擎資料裡沒有的
+            戰術或著法；如果證據不足，軟體會誠實顯示而不是硬掰一個理由。
+          </p>
+        </details>
+
+        <p class="guide-footer-note">
+          還有其他問題？可以到
+          <a class="text-link" href="https://github.com/enzohuang98-crypto/Reckoning/issues">
+            GitHub Issues
+          </a>
+          留言，或參考<a class="text-link" href="security.html">資安說明</a>與
+          <a class="text-link" href="privacy.html">隱私說明</a>。
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="./">
+            <img src="assets/logo.svg" width="38" height="38" alt="">
+            <span><strong>象棋 AI 分析講解</strong><small>本機引擎 × 中文教練</small></span>
+          </a>
+          <p>讓引擎資訊更容易理解的 Windows 桌面工具。</p>
+        </div>
+        <div class="footer-links">
+          <strong>網站資訊</strong>
+          <a href="security.html">資安說明</a>
+          <a href="privacy.html">隱私說明</a>
+        </div>
+        <div class="footer-meta">
+          <span>Windows 桌面 App</span>
+          <span>安裝檔由 GitHub Releases 提供</span>
+          <span>© 2026 Xiangqi Analyzer</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
