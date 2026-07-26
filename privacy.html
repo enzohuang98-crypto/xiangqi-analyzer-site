@@ -9,21 +9,40 @@
     >
     <meta name="referrer" content="no-referrer">
     <meta name="description" content="象棋 AI 分析講解網站的隱私說明。">
-    <meta name="theme-color" content="#f7f7f2">
+    <meta name="theme-color" content="#0d1a14">
     <title>隱私說明｜象棋 AI 分析講解</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="legal-page">
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="./">
-          <img src="assets/logo.svg" width="42" height="42" alt="">
+        <a class="brand" href="./" aria-label="象棋 AI 分析講解首頁">
+          <img src="assets/logo.svg" width="40" height="40" alt="">
           <span><strong>象棋 AI 分析講解</strong><small>本機引擎 × 中文教練</small></span>
         </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="./#how">運作方式</a>
+          <a href="./#features">功能</a>
+          <a href="guide.html">新手教學</a>
+          <a href="security.html">資安說明</a>
+          <a class="nav-cta" href="./">回首頁</a>
+        </nav>
+        <details class="nav-menu">
+          <summary aria-label="開啟選單"></summary>
+          <div class="nav-menu-panel">
+            <a href="./#how">運作方式</a>
+            <a href="./#features">功能</a>
+            <a href="guide.html">新手教學</a>
+            <a href="security.html">資安說明</a>
+            <a href="./">回首頁</a>
+          </div>
+        </details>
       </div>
     </header>
-    <main class="legal-main">
+    <main id="main-content" class="legal-main">
       <article class="container legal-article">
         <a class="back-link" href="./">← 返回首頁</a>
         <p class="eyebrow">Privacy</p>
@@ -63,5 +82,28 @@
         </p>
       </article>
     </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="./">
+            <img src="assets/logo.svg" width="38" height="38" alt="">
+            <span><strong>象棋 AI 分析講解</strong><small>本機引擎 × 中文教練</small></span>
+          </a>
+          <p>讓引擎資訊更容易理解的 Windows 桌面工具。棋局在本機分析，AI 講解為選配功能。</p>
+        </div>
+        <div class="footer-links">
+          <strong>網站資訊</strong>
+          <a href="./">回首頁</a>
+          <a href="guide.html">新手教學</a>
+          <a href="security.html">資安說明</a>
+        </div>
+        <div class="footer-meta">
+          <span>Windows 桌面 App</span>
+          <span>安裝檔由 GitHub Releases 提供</span>
+          <span>© 2026 Xiangqi Analyzer</span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
