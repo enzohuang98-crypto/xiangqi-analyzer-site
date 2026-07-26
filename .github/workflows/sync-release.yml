@@ -34,6 +34,9 @@ jobs:
       - name: Run site checks
         run: node scripts/check-site.mjs
 
+      - name: Verify the rewritten badge matches data/release.json
+        run: node scripts/verify-release-markers.mjs
+
       - name: Commit and push if release info changed
         run: |
           set -euo pipefail

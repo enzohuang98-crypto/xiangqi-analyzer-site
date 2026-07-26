@@ -1,12 +1,15 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const REPO = 'enzohuang98-crypto/Reckoning'
-const START_MARK = '<!-- RELEASE_INFO_START -->'
-const END_MARK = '<!-- RELEASE_INFO_END -->'
-const TARGET_FILES = ['index.html', 'guide.html']
+import { resolve } from 'node:path'
+import {
+  REPO,
+  TARGET_FILES,
+  applyMarker,
+  buildBlock,
+  formatDate,
+  formatSize,
+  root,
+  shortenHash
+} from './release-info.mjs'
 
 function authHeaders(extra = {}) {
   const headers = {
@@ -57,27 +60,6 @@ function parseSha256Sums(text, fileName) {
   return /^[a-f0-9]{64}$/i.test(hash) ? hash.toLowerCase() : null
 }
 
-function formatDate(iso) {
-  const date = new Date(iso)
-  const pad = (n) => String(n).padStart(2, '0')
-  return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(date.getUTCDate())}`
-}
-
-function formatSize(bytes) {
-  return `${Math.round(bytes / (1024 * 1024))} MB`
-}
-
-function shortenHash(hex) {
-  return hex.length > 28 ? `${hex.slice(0, 12)}…${hex.slice(-12)}` : hex
-}
-
-function applyMarker(html, replacement) {
-  const start = html.indexOf(START_MARK)
-  const end = html.indexOf(END_MARK)
-  if (start === -1 || end === -1 || end < start) return html
-  return html.slice(0, start + START_MARK.length) + replacement + html.slice(end)
-}
-
 async function main() {
   const release = await fetchJson(`https://api.github.com/repos/${REPO}/releases/latest`)
   const version = release.tag_name.replace(/^v/, '')
@@ -114,6 +96,9 @@ async function main() {
     throw new Error('Could not determine an installer hash from SHA256SUMS.txt or latest.yml.')
   }
 
+  // Every field here must be derived from the release itself. Anything that
+  // changes per run (a "checked at" timestamp, say) would defeat the
+  // workflow's `git diff --quiet` guard and commit on every schedule tick.
   const data = {
     repo: REPO,
     tag: release.tag_name,
@@ -123,26 +108,21 @@ async function main() {
     fileSizeBytes: setupAsset.size,
     hashAlgorithm: hashLabel,
     hashHex,
-    releaseUrl: release.html_url,
-    checkedAt: new Date().toISOString()
+    releaseUrl: release.html_url
   }
 
   const dataDir = resolve(root, 'data')
   if (!existsSync(dataDir)) mkdirSync(dataDir, { recursive: true })
   writeFileSync(resolve(dataDir, 'release.json'), `${JSON.stringify(data, null, 2)}\n`)
 
-  const replacement =
-    `\n              目前版本 <strong>v${version}</strong>・${formatSize(data.fileSizeBytes)}・` +
-    `${formatDate(data.publishedAt)} 發布・${hashLabel} <code>${shortenHash(hashHex)}</code>` +
-    `（<a class="inline-link" href="${data.releaseUrl}">於 GitHub Releases 核對完整雜湊 →</a>）。` +
-    `此區塊由自動化流程每 6 小時與最新發布同步。\n              `
+  const block = buildBlock(data)
 
   let changedFiles = 0
   for (const relativePath of TARGET_FILES) {
     const filePath = resolve(root, relativePath)
     if (!existsSync(filePath)) continue
     const html = readFileSync(filePath, 'utf8')
-    const updated = applyMarker(html, replacement)
+    const updated = applyMarker(html, block)
     if (updated !== html) {
       writeFileSync(filePath, updated)
       changedFiles += 1

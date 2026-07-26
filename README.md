@@ -25,6 +25,14 @@ node scripts/check-site.mjs
 - 本機連結與靜態資源必須存在
 - Repository 不得包含安裝檔、API Key 或常見秘密格式
 
+另外可離線檢查頁面上的版本徽章是否與 `data/release.json` 一致：
+
+```powershell
+node scripts/verify-release-markers.mjs
+```
+
+以上兩個檢查都由 `.github/workflows/ci.yml` 在每次 push 與 PR 時自動執行。
+
 ## 安裝檔版本自動同步
 
 `.github/workflows/sync-release.yml` 每 6 小時（也可手動觸發）執行
@@ -34,6 +42,12 @@ Release，讀出版本號、發布日期、檔案大小與雜湊（優先用 `SH
 裡 `<!-- RELEASE_INFO_START -->`／`<!-- RELEASE_INFO_END -->` 之間的版本徽章文字，
 有變更才會 commit。安裝檔本身仍完全不進這個 repo，下載按鈕永遠連到
 `Reckoning/releases/latest`，由 GitHub 自動導向最新版本。
+
+徽章文字的產生規則集中在 [`scripts/release-info.mjs`](scripts/release-info.mjs)，
+同步腳本與離線驗證腳本共用同一份實作。`data/release.json` 內**不得**加入任何每次執行都
+會變動的欄位（例如檢查時間戳），否則 workflow 的 `git diff --quiet` 判斷會失效，
+變成每 6 小時都產生一次無意義的 commit 並重新部署 Pages；
+`scripts/verify-release-markers.mjs` 會擋下這種情況。
 
 ## GitHub Pages（HTTPS）
 
