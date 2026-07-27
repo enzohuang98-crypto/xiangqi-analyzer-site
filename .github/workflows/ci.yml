@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Static site checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify scripts parse
+        run: |
+          node --check scripts/check-site.mjs
+          node --check scripts/serve.mjs
+          node --check scripts/sync-release.mjs
+
+      - name: Run site checks
+        run: node scripts/check-site.mjs
+
+      - name: Verify release markers are present and canonical
+        run: node scripts/verify-release-markers.mjs

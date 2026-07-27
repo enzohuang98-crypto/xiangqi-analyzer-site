@@ -9,26 +9,45 @@
     >
     <meta name="referrer" content="no-referrer">
     <meta name="description" content="象棋 AI 分析講解網站的 C 級資安基線與限制。">
-    <meta name="theme-color" content="#f7f7f2">
+    <meta name="theme-color" content="#0d1a14">
     <title>資安說明｜象棋 AI 分析講解</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="legal-page">
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="./">
-          <img src="assets/logo.svg" width="42" height="42" alt="">
+        <a class="brand" href="./" aria-label="象棋 AI 分析講解首頁">
+          <img src="assets/logo.svg" width="40" height="40" alt="">
           <span><strong>象棋 AI 分析講解</strong><small>本機引擎 × 中文教練</small></span>
         </a>
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="./#how">運作方式</a>
+          <a href="./#features">功能</a>
+          <a href="guide.html">新手教學</a>
+          <a href="privacy.html">隱私說明</a>
+          <a class="nav-cta" href="./">回首頁</a>
+        </nav>
+        <details class="nav-menu">
+          <summary aria-label="開啟選單"></summary>
+          <div class="nav-menu-panel">
+            <a href="./#how">運作方式</a>
+            <a href="./#features">功能</a>
+            <a href="guide.html">新手教學</a>
+            <a href="privacy.html">隱私說明</a>
+            <a href="./">回首頁</a>
+          </div>
+        </details>
       </div>
     </header>
-    <main class="legal-main">
+    <main id="main-content" class="legal-main">
       <article class="container legal-article">
         <a class="back-link" href="./">← 返回首頁</a>
         <p class="eyebrow">Security baseline</p>
         <h1>C 級資安說明</h1>
-        <p class="legal-meta">版本 1.1｜更新日期：2026 年 7 月 25 日</p>
+        <p class="legal-meta">版本 1.2｜更新日期：2026 年 7 月 26 日</p>
 
         <p class="notice">
           「C 級」是本專案自行定義的靜態產品網站安全基線，不是政府分級，也不代表
@@ -37,7 +56,7 @@
 
         <h2>適用範圍</h2>
         <p>
-          本基線只涵蓋這個公開說明網站。桌面 App、未來的安裝檔、更新服務、第三方象棋引擎及
+          本基線只涵蓋這個公開說明網站。桌面 App、安裝檔、自動更新服務、第三方象棋引擎及
           AI Provider 有各自的風險與安全控制，不因網站符合本基線而自動符合。
         </p>
 
@@ -47,6 +66,8 @@
           <li>不執行 JavaScript，不使用第三方套件、CDN、外部字型或遠端圖片。</li>
           <li>不提供登入、註冊、留言、搜尋、付款、檔案上傳或資料輸入表單。</li>
           <li>本站不直接放置安裝檔；下載連結一律指向 GitHub Releases，由 GitHub 代管與提供雜湊值。</li>
+          <li>由 GitHub Pages 代管，<code>*.github.io</code> 網域一律強制 HTTPS，不提供
+            未加密的 HTTP 存取。</li>
         </ul>
 
         <h2>瀏覽器端限制</h2>
@@ -78,12 +99,16 @@
         <h2>發行安裝檔的現況</h2>
         <p>安裝檔已開放下載，發行流程維持以下項目才可維持 C 級發行基線：</p>
         <ul>
-          <li>每個版本公開明確版本號，並附 <code>latest.yml</code> 內的 SHA-512 雜湊供核對。</li>
+          <li>每個版本公開明確版本號，並附雜湊（<code>SHA256SUMS.txt</code> 或
+            <code>latest.yml</code> 內的 SHA-512）供核對。</li>
           <li>下載連結只允許 HTTPS，且一律指向 GitHub Releases 這個受控的正式發布位置，
             網站本身不主機安裝檔。</li>
           <li>每次發布前在乾淨的 Windows runner 上實際執行安裝、驗證版本與捷徑，
             再解除安裝並確認清除乾淨，同時跑相依套件漏洞稽核。</li>
           <li>舊版本不會被靜默替換；任何檔案變更都會產生新版本號與新的 Release。</li>
+          <li>首頁與使用說明上的版本號、雜湊與發布日期由
+            <code>.github/workflows/sync-release.yml</code> 每 6 小時自動查詢公開 Release
+            metadata 更新，這個流程只讀取公開資訊、不下載或重新散布安裝檔本身。</li>
         </ul>
         <p class="notice notice-warn">
           <strong>尚未完成：</strong>安裝檔目前沒有受信任 CA 核發的程式碼簽章憑證，
@@ -101,5 +126,28 @@
         </p>
       </article>
     </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="./">
+            <img src="assets/logo.svg" width="38" height="38" alt="">
+            <span><strong>象棋 AI 分析講解</strong><small>本機引擎 × 中文教練</small></span>
+          </a>
+          <p>讓引擎資訊更容易理解的 Windows 桌面工具。棋局在本機分析，AI 講解為選配功能。</p>
+        </div>
+        <div class="footer-links">
+          <strong>網站資訊</strong>
+          <a href="./">回首頁</a>
+          <a href="guide.html">新手教學</a>
+          <a href="privacy.html">隱私說明</a>
+        </div>
+        <div class="footer-meta">
+          <span>Windows 桌面 App</span>
+          <span>安裝檔由 GitHub Releases 提供</span>
+          <span>© 2026 Xiangqi Analyzer</span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

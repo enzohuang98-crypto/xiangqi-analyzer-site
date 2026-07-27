@@ -10,9 +10,9 @@
     <meta name="referrer" content="no-referrer">
     <meta
       name="description"
-      content="完全不懂電腦也看得懂的象棋 AI 分析講解使用說明：下載、安裝、Windows 警告怎麼辦、第一次分析怎麼做。"
+      content="完全不懂電腦也看得懂的象棋 AI 分析講解使用說明：下載、安裝、Windows 警告怎麼辦、猜著模式、雙引擎複核與自動更新。"
     >
-    <meta name="theme-color" content="#f7f7f2">
+    <meta name="theme-color" content="#0d1a14">
     <title>使用說明｜象棋 AI 分析講解</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
@@ -23,18 +23,37 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="./" aria-label="象棋 AI 分析講解首頁">
-          <img src="assets/logo.svg" width="42" height="42" alt="">
+          <img src="assets/logo.svg" width="40" height="40" alt="">
           <span>
             <strong>象棋 AI 分析講解</strong>
             <small>本機引擎 × 中文教練</small>
           </span>
         </a>
-        <nav aria-label="主要導覽">
+        <nav class="site-nav" aria-label="主要導覽">
+          <a href="./#how">運作方式</a>
           <a href="./#features">功能</a>
-          <a href="guide.html">使用方式</a>
           <a href="./#engines">相容性</a>
           <a href="./#security">資安</a>
+          <a
+            class="nav-cta"
+            href="https://github.com/enzohuang98-crypto/Reckoning/releases/latest"
+          >
+            下載安裝檔
+          </a>
         </nav>
+        <details class="nav-menu">
+          <summary aria-label="開啟選單"></summary>
+          <div class="nav-menu-panel">
+            <a href="./#how">運作方式</a>
+            <a href="./#features">功能</a>
+            <a href="./#engines">相容性</a>
+            <a href="./#security">資安</a>
+            <a href="./">回首頁</a>
+            <a href="https://github.com/enzohuang98-crypto/Reckoning/releases/latest">
+              下載安裝檔
+            </a>
+          </div>
+        </details>
       </div>
     </header>
 
@@ -43,21 +62,26 @@
         <a class="back-link" href="./">← 返回首頁</a>
         <p class="eyebrow">給完全不熟電腦的人看的說明</p>
         <h1>從下載到看懂第一步棋</h1>
-        <p class="legal-meta">版本 1.0｜更新日期：2026 年 7 月 25 日</p>
+        <p class="legal-meta">版本 2.0｜更新日期：2026 年 7 月 26 日</p>
 
         <p class="guide-lead">
-          這份說明假設你沒有寫過程式、也沒特別懂電腦，只用最普通的方式操作滑鼠與鍵盤。
-          每一步都會說清楚「要點哪裡」跟「為什麼要這樣做」。跟著做，大概十分鐘內就能看到
-          第一個分析結果。
+          這份說明假設你沒寫過程式、也不特別懂電腦，只用最普通的方式操作滑鼠與鍵盤。每一步都會
+          說清楚「要點哪裡」跟「為什麼要這樣做」。跟著做，大概十分鐘內就能看到第一個分析結果。
         </p>
 
         <div class="notice">
           這是什麼軟體？簡單說：<strong>電腦會先算出這步棋好不好</strong>（這部分完全免費、
-          在你自己電腦上跑），<strong>然後你可以選擇性地</strong>讓一個 AI 服務把算出來的數字
-          翻譯成一段中文說明「為什麼」。不想用 AI 也完全沒問題，光靠電腦計算就能看到最佳著法。
+          在你自己電腦上跑，內建的 Pikafish 引擎開箱即用），<strong>然後你可以選擇性地</strong>讓
+          一個 AI 服務把算出來的數字翻譯成一段中文說明「為什麼」。不想用 AI 也完全沒問題，光靠
+          電腦計算就能看到最佳著法。
         </div>
 
         <h2 id="download">第一步：下載安裝檔</h2>
+        <p class="release-note">
+          <!-- RELEASE_INFO_START -->
+          目前版本 <strong>v0.3.6</strong>・162 MB・2026-07-25 發布・SHA-512 <code>d11873fccd75…8070da3b61c6</code>（<a class="inline-link" href="https://github.com/enzohuang98-crypto/Reckoning/releases/tag/v0.3.6">於 GitHub Releases 核對完整雜湊 →</a>）。此區塊由自動化流程每 6 小時與最新發布同步。
+          <!-- RELEASE_INFO_END -->
+        </p>
         <ol class="steps guide-steps">
           <li>
             <span>1</span>
@@ -65,7 +89,7 @@
               <h3>回到首頁，按下「下載 Windows 安裝檔」</h3>
               <p>
                 按下後會跳到 GitHub（一個公開放程式碼與檔案的網站）的「Releases」頁面，
-                這是本專案唯一正式發布安裝檔的地方。
+                這是本專案唯一正式發布安裝檔的地方，永遠指向最新版本。
               </p>
             </div>
           </li>
@@ -111,7 +135,7 @@
         </ol>
         <div class="notice notice-warn">
           如果不放心，可以先把下載下來的檔案交給你信任、比較懂電腦的朋友或家人看一眼再繼續，
-          這是完全合理的作法。
+          這是完全合理的作法；也可以對照上方顯示的 SHA-512 雜湊，確認檔案沒有被竄改。
         </div>
 
         <h2 id="install">第三步：安裝</h2>
@@ -170,7 +194,10 @@
             <span>2</span>
             <div>
               <h3>回到軟體，點右上角「設定」→「AI」</h3>
-              <p>選好對應的服務與模型，把金鑰貼上，按「儲存並使用」。</p>
+              <p>
+                選好對應的服務與模型，把金鑰貼上，按「儲存並使用」。金鑰只會用 Windows
+                內建的加密機制存在你自己的電腦上，不會離開你的電腦。
+              </p>
             </div>
           </li>
           <li>
@@ -225,6 +252,27 @@
           並比較兩者差多少分。適合想練習「自己判斷」而不是直接看答案的人。
         </p>
 
+        <h2 id="dual-engine">雙引擎複核：不把單一引擎的話當聖旨</h2>
+        <p>
+          在「設定」→「引擎」可以額外指定一顆複核引擎。兩顆引擎對同一局面的判斷明顯不一致時，
+          軟體會提示你這是「有爭議的局面」，而不是直接把主要引擎的分數當成唯一答案。只想用一顆
+          引擎也完全沒問題，複核引擎是選配功能。
+        </p>
+
+        <h2 id="review-list">待理解局面：幫你記住還沒想通的棋</h2>
+        <p>
+          分析或猜著的過程中，如果遇到一個「引擎說這樣最好，但我還是不懂為什麼」的局面，可以把它
+          收進「待理解局面」清單。之後隨時回到這份清單，重新打開該局面繼續向 AI 追問，直到真的
+          理解為止，不用擔心看過一次就忘記。
+        </p>
+
+        <h2 id="auto-update">軟體會自動更新嗎？</h2>
+        <p>
+          會。軟體啟動後與之後每 4 小時會自動檢查一次新版本，發現新版會在背景下載，下次重新啟動
+          前提示你安裝，不需要每次都回到本網站重新下載。如果想立刻更新，也可以隨時回首頁下載最新
+          安裝檔重新覆蓋安裝，兩種方式都可以。
+        </p>
+
         <h2 id="faq">常見問題</h2>
         <details>
           <summary>安裝完打開軟體，防毒軟體跳出攔截或隔離怎麼辦？</summary>
@@ -256,6 +304,14 @@
             戰術或著法；如果證據不足，軟體會誠實顯示而不是硬掰一個理由。
           </p>
         </details>
+        <details>
+          <summary>除了 Pikafish，還能接哪些引擎？</summary>
+          <p>
+            設定頁提供 Px0、象棋名手、象棋旋風、象棋小蟲、烏雲象棋、阿爾法貓、象眼、佳佳象棋、
+            MaxQi 與自訂 UCI/UCCI 引擎等一鍵連接設定檔，但執行檔都需要你自行從可信來源取得
+            合法授權後指定路徑，軟體本身只隨附 Pikafish 一顆。
+          </p>
+        </details>
 
         <p class="guide-footer-note">
           還有其他問題？可以到
@@ -275,10 +331,11 @@
             <img src="assets/logo.svg" width="38" height="38" alt="">
             <span><strong>象棋 AI 分析講解</strong><small>本機引擎 × 中文教練</small></span>
           </a>
-          <p>讓引擎資訊更容易理解的 Windows 桌面工具。</p>
+          <p>讓引擎資訊更容易理解的 Windows 桌面工具。棋局在本機分析，AI 講解為選配功能。</p>
         </div>
         <div class="footer-links">
           <strong>網站資訊</strong>
+          <a href="./">回首頁</a>
           <a href="security.html">資安說明</a>
           <a href="privacy.html">隱私說明</a>
         </div>
