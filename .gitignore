@@ -1,0 +1,3 @@
+# Build output for Cloudflare Pages (scripts/build-dist.mjs)
+dist/
+node_modules/

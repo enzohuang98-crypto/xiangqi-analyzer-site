@@ -28,8 +28,16 @@ Provider，也不代表 ISO 27001、SOC 2、政府資安分級或第三方認證
 尚未完成：安裝檔目前沒有受信任 CA 核發的程式碼簽章憑證，Windows SmartScreen 可能顯示
 「未知發行者」警告，詳見 [`guide.html`](guide.html#smartscreen)。
 
-## 代管限制
+## 代管與回應標頭
 
-GitHub Pages 無法由此 Repository 自訂所有 HTTP 回應標頭。未來若需要完整
-`Permissions-Policy`、`X-Content-Type-Options` 與 `frame-ancestors`，應改用可設定安全標頭的
-代管服務。
+網站由 Cloudflare Pages 代管，強制 HTTPS。安全標頭定義在 [`_headers`](_headers)，包含
+`Content-Security-Policy`（含 `frame-ancestors 'none'`）、`X-Content-Type-Options`、
+`X-Frame-Options`、`Permissions-Policy`、`Referrer-Policy` 與 `Strict-Transport-Security`。
+
+先前使用 GitHub Pages 時無法自訂回應標頭，此限制已隨這次搬遷解除。
+
+`_headers` 內的 CSP 必須與各頁面 `<meta http-equiv="Content-Security-Policy">` 保持一致：
+兩者同時存在時瀏覽器會取交集，不一致會在無錯誤訊息的情況下把政策收得更嚴、讓樣式失效。
+
+公開網站只發布 [`scripts/build-dist.mjs`](scripts/build-dist.mjs) 產出的 `dist/`；
+建置腳本、workflow 與專案文件不會出現在網站上。
