@@ -1,11 +1,11 @@
 {
   "repo": "enzohuang98-crypto/Reckoning",
-  "tag": "v0.3.6",
-  "version": "0.3.6",
-  "publishedAt": "2026-07-25T22:28:30.103Z",
-  "fileName": "xiangqi-analyzer-0.3.6-setup.exe",
-  "fileSizeBytes": 169642942,
-  "hashAlgorithm": "SHA-512",
-  "hashHex": "d11873fccd7537c064940608d8a3b084239ac3c0283cc0370c828f4744276fb7f72969baa9815902bab45348e61eb94c30a3c9d9f34b81b091b48070da3b61c6",
-  "releaseUrl": "https://github.com/enzohuang98-crypto/Reckoning/releases/tag/v0.3.6"
+  "tag": "v0.3.11",
+  "version": "0.3.11",
+  "publishedAt": "2026-08-07T00:26:27.464Z",
+  "fileName": "xiangqi-analyzer-0.3.11-setup.exe",
+  "fileSizeBytes": 164630863,
+  "hashAlgorithm": "SHA-256",
+  "hashHex": "31d89f8c69dbaec1aec2be2205108b54d4bec243dc9e2eb7b8ccfb412c762824",
+  "releaseUrl": "https://github.com/enzohuang98-crypto/Reckoning/releases/tag/v0.3.11"
 }
