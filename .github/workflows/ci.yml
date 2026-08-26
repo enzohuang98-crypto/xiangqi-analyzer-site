@@ -31,9 +31,13 @@ jobs:
           node --check scripts/check-site.mjs
           node --check scripts/serve.mjs
           node --check scripts/sync-release.mjs
+          node --check scripts/build-dist.mjs
 
       - name: Run site checks
         run: node scripts/check-site.mjs
 
       - name: Verify release markers are present and canonical
         run: node scripts/verify-release-markers.mjs
+
+      - name: Build the Cloudflare Pages output
+        run: node scripts/build-dist.mjs

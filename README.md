@@ -2,7 +2,7 @@
 
 象棋 AI 分析講解的公開產品網站。網站與桌面 App（[Reckoning](https://github.com/enzohuang98-crypto/Reckoning)）
 原始碼分開管理，提供產品介紹、新手教學、相容性資訊、資安基線與隱私說明。網站本身不主機安裝檔，
-下載連結一律指向該 repo 的 GitHub Releases，並由 GitHub Pages 以 HTTPS 代管。
+下載連結一律指向該 repo 的 GitHub Releases，網站則由 Cloudflare Pages 以 HTTPS 代管。
 
 ## 本機預覽
 
@@ -49,11 +49,33 @@ Release，讀出版本號、發布日期、檔案大小與雜湊（優先用 `SH
 變成每 6 小時都產生一次無意義的 commit 並重新部署 Pages；
 `scripts/verify-release-markers.mjs` 會擋下這種情況。
 
-## GitHub Pages（HTTPS）
+## 部署（Cloudflare Pages，HTTPS）
 
-網站設計為以 GitHub Pages 代管於 `https://enzohuang98-crypto.github.io/xiangqi-analyzer-site/`，
-`*.github.io` 網域一律強制 HTTPS。若尚未啟用，需要 repo 管理員在 **Settings → Pages** 設定
-Source 為 `main` 分支（root）；這個設定無法透過本 repo 的檔案變更或自動化開啟，須手動確認一次。
+網站由 Cloudflare Pages 代管，強制 HTTPS。建置只是把網站檔案複製到 `dist/`，沒有打包工具，
+也沒有任何 npm 依賴：
+
+```powershell
+node scripts/build-dist.mjs
+```
+
+在 Cloudflare 建立 Pages 專案時（Workers & Pages → Create → Pages → Connect to Git），
+選擇這個 repo 與 `main` 分支，並填入：
+
+| 欄位 | 值 |
+| --- | --- |
+| Framework preset | None |
+| Build command | `node scripts/build-dist.mjs` |
+| Build output directory | `dist` |
+
+之後每次 push 到 `main` 都會自動重新部署，包含版本同步 workflow 產生的 commit。
+
+網址預設為 `https://<專案名稱>.pages.dev`。本 repo 的 `robots.txt` 與 `sitemap.xml` 目前
+填的是 `https://xiangqi-analyzer-site.pages.dev`；**若你的 Cloudflare 專案名稱不同，
+這兩個檔案要一起改**，否則 sitemap 會指向不存在的網址。日後改用自有網域時，
+在 Cloudflare 專案的 Custom domains 加入網域並更新同樣這兩個檔案即可。
+
+安全回應標頭定義在 [`_headers`](_headers)，由 Cloudflare Pages 送出；詳見
+[`SECURITY.md`](SECURITY.md)。
 
 ## C 級安全基線
 
