@@ -47,7 +47,7 @@
         <a class="back-link" href="./">← 返回首頁</a>
         <p class="eyebrow">Security baseline</p>
         <h1>C 級資安說明</h1>
-        <p class="legal-meta">版本 1.2｜更新日期：2026 年 7 月 26 日</p>
+        <p class="legal-meta">版本 1.3｜更新日期：2026 年 7 月 26 日</p>
 
         <p class="notice">
           「C 級」是本專案自行定義的靜態產品網站安全基線，不是政府分級，也不代表
@@ -66,8 +66,8 @@
           <li>不執行 JavaScript，不使用第三方套件、CDN、外部字型或遠端圖片。</li>
           <li>不提供登入、註冊、留言、搜尋、付款、檔案上傳或資料輸入表單。</li>
           <li>本站不直接放置安裝檔；下載連結一律指向 GitHub Releases，由 GitHub 代管與提供雜湊值。</li>
-          <li>由 GitHub Pages 代管，<code>*.github.io</code> 網域一律強制 HTTPS，不提供
-            未加密的 HTTP 存取。</li>
+          <li>由 Cloudflare Pages 代管，一律強制 HTTPS，不提供未加密的 HTTP 存取。</li>
+          <li>公開網站只包含建置輸出的靜態頁面；建置腳本、workflow 與專案文件不會發布到網站上。</li>
         </ul>
 
         <h2>瀏覽器端限制</h2>
@@ -78,6 +78,15 @@
         <p>
           網站同時使用 <code>no-referrer</code>，避免使用者從本站前往其他網站時傳送目前頁面網址。
           外部連結若日後加入，必須使用 <code>noopener</code> 與 <code>noreferrer</code>。
+        </p>
+        <p>
+          除了頁面內的 <code>&lt;meta&gt;</code> 標籤，代管平台另外以真正的 HTTP 回應標頭送出
+          <code>Content-Security-Policy</code>（含 <code>frame-ancestors 'none'</code>）、
+          <code>X-Content-Type-Options: nosniff</code>、<code>X-Frame-Options: DENY</code>、
+          <code>Permissions-Policy</code>、<code>Referrer-Policy</code> 與
+          <code>Strict-Transport-Security</code>。其中 <code>frame-ancestors</code>、
+          <code>nosniff</code> 與 HSTS 只有以回應標頭形式送出才會生效，無法靠 <code>&lt;meta&gt;</code>
+          達成。
         </p>
 
         <h2>資料與隱私</h2>
@@ -119,10 +128,15 @@
 
         <h2>已知限制</h2>
         <p>
-          GitHub Pages 不允許專案自行設定所有 HTTP 回應標頭。因此
-          <code>X-Content-Type-Options</code>、完整的 <code>Permissions-Policy</code> 與
-          CSP 的 <code>frame-ancestors</code> 等控制，需在未來使用可自訂回應標頭的代管服務時補強。
-          現階段以無腳本、無輸入、無敏感資料及頁面內 CSP 降低風險。
+          先前使用 GitHub Pages 代管時，無法自訂 HTTP 回應標頭，
+          <code>X-Content-Type-Options</code>、<code>Permissions-Policy</code> 與 CSP 的
+          <code>frame-ancestors</code> 都設不了。改用 Cloudflare Pages 後這些標頭已實際送出，
+          此限制已解除。
+        </p>
+        <p>
+          仍存在的限制：代管平台本身（Cloudflare）位於使用者與網站之間，能看見連線資訊；
+          本網站無法、也不試圖規避這一點。網域目前使用平台提供的子網域，
+          若日後改用自有網域，HSTS 可再加上 <code>includeSubDomains</code> 與 preload。
         </p>
       </article>
     </main>
